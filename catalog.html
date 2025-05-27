@@ -308,36 +308,21 @@
 
  
 <script>
-document.getElementById("apply-filter").addEventListener("click", function () {
-  const minPrice = parseFloat(document.getElementById("min-price").value) || 0;
-  const maxPrice = parseFloat(document.getElementById("max-price").value) || Infinity;
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  const products = document.querySelectorAll(".product");
+    const existingItem = cart.find(item => item.name === productName);
 
-  products.forEach(function (product) {
-    const priceElement = product.querySelector("p[data-price]");
-    const price = parseFloat(priceElement.getAttribute("data-price"));
-
-    if (price >= minPrice && price <= maxPrice) {
-      product.style.display = "block";
+    if (existingItem) {
+      existingItem.quantity += 1;
     } else {
-      product.style.display = "none";
+      cart.push({ name: productName, price: price, quantity: 1 });
     }
-  });
-});
 
-function addToWishlist(name, price, image) {
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-  if (!wishlist.some(item => item.name === name)) {
-    wishlist.push({ name, price, image });
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    alert("Додано до списку бажань!");
-  } else {
-    alert("Вже у списку бажань.");
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    alert(`${productName} додано до кошика!`);
   }
-}
-
 </script>
 
 </body>
