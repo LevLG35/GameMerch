@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Оформлення замовлення</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Оформлення замовлення</h1>
+  </header>
+
+  <main>
+    <form id="order-form">
+      <label>
+        Ім’я:
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Телефон:
+        <input type="tel" name="phone" required />
+      </label>
+      <label>
+        Адреса доставки:
+        <textarea name="address" required></textarea>
+      </label>
+      <button type="submit" class="btn">Підтвердити замовлення</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GameMerch</p>
+  </footer>
+
+  <script>
+    document.getElementById('order-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Дякуємо! Ваше замовлення прийнято.');
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

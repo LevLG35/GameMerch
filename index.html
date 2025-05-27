@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GameMerch - Головна</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>GameMerch</h1>
+        <p id="welcomeMessage">Магазин атрибутики для шанувальників комп'ютерних ігор</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="cart.html">Кошик</a></li>
+            <li><a href="login.html">Увійти</a></li>
+            <li><a href="register.html">Реєстрація</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="section">
+            <h2>Ласкаво просимо до GameMerch!</h2>
+            <p>У нас ви знайдете найкращу атрибутику для комп'ютерних ігор: футболки, чашки, постери, ігрові миші та багато іншого.</p>
+            <a class="btn" href="catalog.html">Перейти до каталогу</a>
+        </section>
+
+        <!-- Відгуки клієнтів -->
+        <section class="reviews">
+            <h2>Відгуки наших клієнтів</h2>
+            <div class="review-cards">
+                <div class="review-card">
+                    <p>"Прекрасний сервіс і швидка доставка!"</p>
+                    <h4>— Олег</h4>
+                </div>
+                <div class="review-card">
+                    <p>"Якість товарів перевищила очікування."</p>
+                    <h4>— Марія</h4>
+                </div>
+                <div class="review-card">
+                    <p>"Великий вибір і приємні ціни."</p>
+                    <h4>— Сергій</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GameMerch. Усі права захищено.</p>
+    </footer>
+
+    <script>
+        const welcomeMessage = document.getElementById("welcomeMessage");
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        if (loggedInUser && loggedInUser.username) {
+            welcomeMessage.innerHTML = `Ласкаво просимо, <strong>${loggedInUser.username}</strong>!`;
+        }
+    </script>
+</body>
+</html>
