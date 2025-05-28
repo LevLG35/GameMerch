@@ -168,37 +168,77 @@
       </div>
 </div>
 
-            <!-- Начало дополнительных товаров -->
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://mfest.com.ua/media/productdesigner/designs/362140/additional/34zf12rby87o9nktqwxm.jpg" alt="Футболка Apex Legends" />
-                <h5 class="card-title">Футболка Apex Legends</h5>
-                <p class="card-text" data-price="399">Ціна: 399 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Футболка Apex Legends', 399)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://maikoff.ua/uploaded/prints_spool/10/p9166l10575w1000x968y1056t15c4front0max-chashka-s-tsvetnoy-ruchkoy-fortnite-logo.webp" alt="Кружка Fortnite" />
-                <h5 class="card-title">Кружка Fortnite</h5>
-                <p class="card-text" data-price="189">Ціна: 189 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Кружка Fortnite', 189)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://shop-cdn1-2.vigbo.tech/shops/126035/products/22049000/images/2-e2ad575c45802a0a9a48ce6d38850906.jpg" alt="Постер The Witcher 3" />
-                <h5 class="card-title">Постер The Witcher 3</h5>
-                <p class="card-text" data-price="159">Ціна: 159 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Постер The Witcher 3', 159)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/460524673.jpg" alt="Коврик для миші Valorant" />
-                <h5 class="card-title">Коврик для миші Valorant</h5>
-                <p class="card-text" data-price="249">Ціна: 249 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Коврик для миші Valorant', 249)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/51807_Kepka_CS_GO.jpg" alt="Кепка CS:GO" />
-                <h5 class="card-title">Кепка CS:GO</h5>
-                <p class="card-text" data-price="299">Ціна: 299 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Кепка CS:GO', 299)">Додати до кошика</button>
-            </div>
+            <div class="col-md-3 mb-4">
+  <div class="card">
+    <img src="https://mfest.com.ua/media/productdesigner/designs/362140/additional/34zf12rby87o9nktqwxm.jpg" class="card-img-top" alt="Футболка Apex Legends">
+    <div class="card-body">
+      <h5 class="card-title">Футболка Apex Legends</h5>
+      <p class="card-text">399 грн</p>
+      <button class="btn btn-primary"
+        onclick="addToCart('Футболка Apex Legends', 399, 'https://mfest.com.ua/media/productdesigner/designs/362140/additional/34zf12rby87o9nktqwxm.jpg')">
+        Додати до кошика
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 mb-4">
+  <div class="card">
+    <img src="https://maikoff.ua/uploaded/prints_spool/10/p9166l10575w1000x968y1056t15c4front0max-chashka-s-tsvetnoy-ruchkoy-fortnite-logo.webp" class="card-img-top" alt="Кружка Fortnite">
+    <div class="card-body">
+      <h5 class="card-title">Кружка Fortnite</h5>
+      <p class="card-text">189 грн</p>
+      <button class="btn btn-primary"
+        onclick="addToCart('Кружка Fortnite', 189, 'https://maikoff.ua/uploaded/prints_spool/10/p9166l10575w1000x968y1056t15c4front0max-chashka-s-tsvetnoy-ruchkoy-fortnite-logo.webp')">
+        Додати до кошика
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 mb-4">
+  <div class="card">
+    <img src="https://shop-cdn1-2.vigbo.tech/shops/126035/products/22049000/images/2-e2ad575c45802a0a9a48ce6d38850906.jpg" class="card-img-top" alt="Постер The Witcher 3">
+    <div class="card-body">
+      <h5 class="card-title">Постер The Witcher 3</h5>
+      <p class="card-text">159 грн</p>
+      <button class="btn btn-primary"
+        onclick="addToCart('Постер The Witcher 3', 159, 'https://shop-cdn1-2.vigbo.tech/shops/126035/products/22049000/images/2-e2ad575c45802a0a9a48ce6d38850906.jpg')">
+        Додати до кошика
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 mb-4">
+  <div class="card">
+    <img src="https://content.rozetka.com.ua/goods/images/big/460524673.jpg" class="card-img-top" alt="Коврик для миші Valorant">
+    <div class="card-body">
+      <h5 class="card-title">Коврик для миші Valorant</h5>
+      <p class="card-text">249 грн</p>
+      <button class="btn btn-primary"
+        onclick="addToCart('Коврик для миші Valorant', 249, 'https://content.rozetka.com.ua/goods/images/big/460524673.jpg')">
+        Додати до кошика
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 mb-4">
+  <div class="card">
+    <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/51807_Kepka_CS_GO.jpg" class="card-img-top" alt="Кепка CS:GO">
+    <div class="card-body">
+      <h5 class="card-title">Кепка CS:GO</h5>
+      <p class="card-text">299 грн</p>
+      <button class="btn btn-primary"
+        onclick="addToCart('Кепка CS:GO', 299, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/51807_Kepka_CS_GO.jpg')">
+        Додати до кошика
+      </button>
+    </div>
+  </div>
+</div>
+
+
             <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
                 <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/447180153.jpg" alt="Футболка God of War" />
                 <h5 class="card-title">Футболка God of War</h5>
