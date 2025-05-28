@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Реєстрація
-  const regForm = document.querySelector("form[action='register']") || document.querySelector("form.register");
+  const regForm = document.querySelector("form.register");
   if (regForm) {
     regForm.addEventListener("submit", function (e) {
       e.preventDefault();
