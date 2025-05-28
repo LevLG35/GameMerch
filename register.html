@@ -54,34 +54,6 @@
         <p>&copy; 2025 GameMerch. Усі права захищено.</p>
     </footer>
 
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const username = document.getElementById('username').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const message = document.getElementById('message');
-
-            if (password !== confirmPassword) {
-                message.textContent = "Паролі не співпадають!";
-                message.style.color = "red";
-                return;
-            }
-
-            // Зберігаємо користувача у localStorage
-            const user = { username, email, password };
-            localStorage.setItem("user", JSON.stringify(user));
-
-            message.textContent = "Реєстрація успішна! Перенаправлення...";
-            message.style.color = "green";
-
-            // Перекидання на сторінку входу через 1.5 сек
-            setTimeout(() => {
-                window.location.href = "login.html";
-            }, 1500);
-        });
-    </script>
+      <script src="script.js"></script>
 </body>
 </html>
