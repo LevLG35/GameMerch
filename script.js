@@ -70,3 +70,30 @@ if (checkoutBtn) {
     
     alert(`${productName} додано до кошика!`);
   }
+
+document.getElementById("sort-asc").addEventListener("click", () => sortProducts("asc"));
+  document.getElementById("sort-desc").addEventListener("click", () => sortProducts("desc"));
+
+  function sortProducts(direction) {
+    const container = document.getElementById("product-list");
+    const items = Array.from(container.querySelectorAll(".product"));
+
+    items.sort((a, b) => {
+      const priceA = parseFloat(a.querySelector(".card-text").dataset.price);
+      const priceB = parseFloat(b.querySelector(".card-text").dataset.price);
+      return direction === "asc" ? priceA - priceB : priceB - priceA;
+    });
+
+    // Зберігаємо напрямок сортування у localStorage
+    localStorage.setItem("sortDirection", direction);
+
+    items.forEach(item => container.appendChild(item));
+  }
+
+  // При завантаженні сторінки застосовуємо останнє сортування
+  window.addEventListener("load", () => {
+    const savedDirection = localStorage.getItem("sortDirection");
+    if (savedDirection) {
+      sortProducts(savedDirection);
+    }
+  });
