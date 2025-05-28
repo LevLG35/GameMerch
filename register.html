@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Реєстрація - GameMerch</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -26,21 +27,25 @@
     <main>
         <section class="section">
             <h2>Створити акаунт</h2>
-            <form id="registerForm">
-                <label for="username">Ім'я користувача:</label>
-                <input type="text" id="username" name="username" required />
+            <div class="container mt-5" style="max-width: 500px;">
+  <h2 class="mb-4 text-center">Реєстрація</h2>
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Ім’я</label>
+      <input type="text" class="form-control rounded-3 shadow-sm" id="name" placeholder="Ваше ім’я" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email адреса</label>
+      <input type="email" class="form-control rounded-3 shadow-sm" id="email" placeholder="name@example.com" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Пароль</label>
+      <input type="password" class="form-control rounded-3 shadow-sm" id="password" placeholder="Створіть пароль" required>
+    </div>
+    <button type="submit" class="btn btn-success w-100 rounded-3">Зареєструватися</button>
+  </form>
+</div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required />
-
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required />
-
-                <label for="confirmPassword">Підтвердіть пароль:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required />
-
-                <button type="submit">Зареєструватися</button>
-            </form>
             <p id="message"></p>
         </section>
     </main>
