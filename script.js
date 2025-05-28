@@ -95,4 +95,28 @@ document.addEventListener("DOMContentLoaded", function () {
   descBtn.addEventListener("click", () => sortProducts(false));
 });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // блокуємо стандартну відправку форми
+
+      // Тут можна зробити перевірки або зберігання (не обов’язково)
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (name && email && password) {
+        // Теоретично можна зберегти в localStorage чи просто перейти
+        alert("Реєстрація успішна!");
+
+        // Перенаправлення на сторінку входу
+        window.location.href = "login.html";
+      } else {
+        alert("Будь ласка, заповніть усі поля.");
+      }
+    });
+  });
+
+
 
