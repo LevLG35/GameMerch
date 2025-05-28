@@ -71,29 +71,33 @@ if (checkoutBtn) {
     alert(`${productName} додано до кошика!`);
   }
 
-document.getElementById("sort-asc").addEventListener("click", () => sortProducts("asc"));
-  document.getElementById("sort-desc").addEventListener("click", () => sortProducts("desc"));
+document.addEventListener("DOMContentLoaded", () => {
+  const sortAscBtn = document.getElementById("sort-asc");
+  const sortDescBtn = document.getElementById("sort-desc");
 
-  function sortProducts(direction) {
-    const container = document.getElementById("product-list");
-    const items = Array.from(container.querySelectorAll(".product"));
-
-    items.sort((a, b) => {
-      const priceA = parseFloat(a.querySelector(".card-text").dataset.price);
-      const priceB = parseFloat(b.querySelector(".card-text").dataset.price);
-      return direction === "asc" ? priceA - priceB : priceB - priceA;
-    });
-
-    // Зберігаємо напрямок сортування у localStorage
-    localStorage.setItem("sortDirection", direction);
-
-    items.forEach(item => container.appendChild(item));
+  if (sortAscBtn && sortDescBtn) {
+    sortAscBtn.addEventListener("click", () => sortProducts("asc"));
+    sortDescBtn.addEventListener("click", () => sortProducts("desc"));
   }
 
-  // При завантаженні сторінки застосовуємо останнє сортування
-  window.addEventListener("load", () => {
-    const savedDirection = localStorage.getItem("sortDirection");
-    if (savedDirection) {
-      sortProducts(savedDirection);
-    }
+  const savedDirection = localStorage.getItem("sortDirection");
+  if (savedDirection) {
+    sortProducts(savedDirection);
+  }
+});
+
+function sortProducts(direction) {
+  const container = document.querySelector(".section .row");
+  if (!container) return;
+
+  const items = Array.from(container.querySelectorAll(".product"));
+
+  items.sort((a, b) => {
+    const priceA = parseFloat(a.querySelector(".card-text").dataset.price);
+    const priceB = parseFloat(b.querySelector(".card-text").dataset.price);
+    return direction === "asc" ? priceA - priceB : priceB - priceA;
   });
+
+  localStorage.setItem("sortDirection", direction);
+  items.forEach(item => container.appendChild(item));
+}
