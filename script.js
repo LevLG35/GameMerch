@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contactForm");
+    const form = document.getElementById("contact");
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
