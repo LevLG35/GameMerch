@@ -88,21 +88,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Реєстрація
   const regForm = document.querySelector("form.register");
-  if (regForm) {
-    regForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const name = document.getElementById("name")?.value;
-      const email = document.getElementById("email")?.value;
-      const password = document.getElementById("password")?.value;
+if (regForm) {
+  regForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      if (name && email && password) {
-        alert("Реєстрація успішна!");
-        window.location.href = "login.html";
-      } else {
-        alert("Будь ласка, заповніть усі поля.");
-      }
-    });
-  }
+    const name = document.getElementById("name")?.value.trim();
+    const email = document.getElementById("email")?.value.trim();
+    const password = document.getElementById("password")?.value.trim();
+
+    if (name && email && password) {
+      // Сохраняем пользователя в localStorage
+      const user = { name, email, password };
+      localStorage.setItem('registeredUser', JSON.stringify(user));
+
+      alert("Реєстрація успішна!");
+      window.location.href = "login.html";
+    } else {
+      alert("Будь ласка, заповніть усі поля.");
+    }
+  });
+}
+
 
   // Вхід
   const loginForm = document.getElementById("loginForm");
