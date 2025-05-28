@@ -71,33 +71,28 @@ if (checkoutBtn) {
     alert(`${productName} додано до кошика!`);
   }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sortAscBtn = document.getElementById("sort-asc");
-  const sortDescBtn = document.getElementById("sort-desc");
+document.addEventListener("DOMContentLoaded", function () {
+  const ascBtn = document.getElementById("sort-asc");
+  const descBtn = document.getElementById("sort-desc");
+  const container = document.querySelector(".row");
 
-  if (sortAscBtn && sortDescBtn) {
-    sortAscBtn.addEventListener("click", () => sortProducts("asc"));
-    sortDescBtn.addEventListener("click", () => sortProducts("desc"));
+  function getPrice(element) {
+    return parseFloat(element.querySelector(".card-text").dataset.price);
   }
 
-  const savedDirection = localStorage.getItem("sortDirection");
-  if (savedDirection) {
-    sortProducts(savedDirection);
+  function sortProducts(ascending = true) {
+    const products = Array.from(container.querySelectorAll(".product"));
+    products.sort((a, b) => {
+      return ascending ? getPrice(a) - getPrice(b) : getPrice(b) - getPrice(a);
+    });
+
+    // Очистити контейнер і вставити відсортовані товари
+    container.innerHTML = "";
+    products.forEach((product) => container.appendChild(product));
   }
+
+  ascBtn.addEventListener("click", () => sortProducts(true));
+  descBtn.addEventListener("click", () => sortProducts(false));
 });
 
-function sortProducts(direction) {
-  const container = document.querySelector(".section .row");
-  if (!container) return;
 
-  const items = Array.from(container.querySelectorAll(".product"));
-
-  items.sort((a, b) => {
-    const priceA = parseFloat(a.querySelector(".card-text").dataset.price);
-    const priceB = parseFloat(b.querySelector(".card-text").dataset.price);
-    return direction === "asc" ? priceA - priceB : priceB - priceA;
-  });
-
-  localStorage.setItem("sortDirection", direction);
-  items.forEach(item => container.appendChild(item));
-}
