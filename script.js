@@ -105,33 +105,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Вхід
-  document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector("form");
+  const loginForm = document.getElementById("loginForm");
 
-  if (loginForm) {
-    loginForm.addEventListener("submit", function(e) {
-      e.preventDefault();
+if (loginForm) {
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const emailInput = document.getElementById("email")?.value.trim();
-      const passwordInput = document.getElementById("password")?.value.trim();
+    const email = document.getElementById("email")?.value.trim();
+    const password = document.getElementById("password")?.value.trim();
 
-      if (!emailInput || !passwordInput) {
-        alert("Введіть email та пароль!");
-        return;
-      }
+    if (!email || !password) {
+      alert("Будь ласка, введіть email та пароль.");
+      return;
+    }
 
-      const savedUser = JSON.parse(localStorage.getItem('registeredUser'));
+    const savedUser = JSON.parse(localStorage.getItem('registeredUser'));
 
-      if (savedUser && savedUser.email === emailInput && savedUser.password === passwordInput) {
-        alert(`Вітаємо, ${savedUser.name}! Ви увійшли.`);
-        localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
-        window.location.href = "index.html";  // <-- редирект сюда
-      } else {
-        alert("Невірний email або пароль.");
-      }
-    });
-  }
-});
+    if (savedUser && savedUser.email === email && savedUser.password === password) {
+      alert(`Вітаємо, ${savedUser.name}! Ви увійшли.`);
+      localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
+      window.location.href = "index.html"; // переход на главную
+    } else {
+      alert("Невірний email або пароль.");
+    }
+  });
+}
+
 
 
   // Контакти
