@@ -1,24 +1,30 @@
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function addToCart(productName, price) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-function saveCart() {
+  const existingItem = cart.find(item => item.name === productName);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ name: productName, price: price, quantity: 1 });
+  }
+
   localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function addToCart(name, price) {
-  cart.push({ name, price });
-  saveCart();
-  alert(`Товар "${name}" додано до кошика!`);
+  alert(`${productName} додано до кошика!`);
 }
 
 function removeFromCart(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
-  saveCart();
+  localStorage.setItem('cart', JSON.stringify(cart));
   renderCart();
 }
 
 function renderCart() {
   const cartItems = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
   if (!cartItems || !cartTotal) return;
 
   cartItems.innerHTML = '';
@@ -26,7 +32,7 @@ function renderCart() {
 
   cart.forEach((item, index) => {
     const li = document.createElement('li');
-    li.textContent = `${item.name} - ${item.price} грн`;
+    li.textContent = `${item.name} (${item.quantity}) - ${item.price * item.quantity} грн`;
 
     const btn = document.createElement('button');
     btn.textContent = 'Видалити';
@@ -36,42 +42,29 @@ function renderCart() {
     li.appendChild(btn);
     cartItems.appendChild(li);
 
-    total += item.price;
+    total += item.price * item.quantity;
   });
 
   cartTotal.textContent = `Разом: ${total} грн`;
 }
 
-window.onload = renderCart;
+document.addEventListener("DOMContentLoaded", function () {
+  // Кошик
+  renderCart();
 
-const checkoutBtn = document.getElementById('checkout-btn');
-if (checkoutBtn) {
-  checkoutBtn.addEventListener('click', function () {
-    if (cart.length === 0) {
-      alert('Ваш кошик порожній!');
-      return;
-    }
-    window.location.href = 'checkout.html';
-  });
-}
-
-  function addToCart(productName, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    const existingItem = cart.find(item => item.name === productName);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({ name: productName, price: price, quantity: 1 });
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    alert(`${productName} додано до кошика!`);
+  const checkoutBtn = document.getElementById('checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', function () {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Ваш кошик порожній!');
+        return;
+      }
+      window.location.href = 'checkout.html';
+    });
   }
 
-document.addEventListener("DOMContentLoaded", function () {
+  // Сортування каталогу
   const ascBtn = document.getElementById("sort-asc");
   const descBtn = document.getElementById("sort-desc");
   const container = document.querySelector(".row");
@@ -81,86 +74,70 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function sortProducts(ascending = true) {
+    if (!container) return;
     const products = Array.from(container.querySelectorAll(".product"));
-    products.sort((a, b) => {
-      return ascending ? getPrice(a) - getPrice(b) : getPrice(b) - getPrice(a);
-    });
-
-    // Очистити контейнер і вставити відсортовані товари
+    products.sort((a, b) => ascending ? getPrice(a) - getPrice(b) : getPrice(b) - getPrice(a));
     container.innerHTML = "";
     products.forEach((product) => container.appendChild(product));
   }
 
-  ascBtn.addEventListener("click", () => sortProducts(true));
-  descBtn.addEventListener("click", () => sortProducts(false));
-});
+  if (ascBtn && descBtn) {
+    ascBtn.addEventListener("click", () => sortProducts(true));
+    descBtn.addEventListener("click", () => sortProducts(false));
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // блокуємо стандартну відправку форми
-
-      // Тут можна зробити перевірки або зберігання (не обов’язково)
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+  // Реєстрація
+  const regForm = document.querySelector("form[action='register']") || document.querySelector("form.register");
+  if (regForm) {
+    regForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name")?.value;
+      const email = document.getElementById("email")?.value;
+      const password = document.getElementById("password")?.value;
 
       if (name && email && password) {
-        // Теоретично можна зберегти в localStorage чи просто перейти
         alert("Реєстрація успішна!");
-
-        // Перенаправлення на сторінку входу
         window.location.href = "login.html";
       } else {
         alert("Будь ласка, заповніть усі поля.");
       }
     });
-  });
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
+  // Вхід
+  const loginForm = document.querySelector("form[action='login']") || document.querySelector("form.login");
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email")?.value;
+      const password = document.getElementById("password")?.value;
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // зупиняє стандартну відправку форми
-
-      // Тут можна вставити перевірку логіна і пароля (якщо треба)
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      // Наприклад, умовна перевірка:
       if (email && password) {
-        // Зберегти, що користувач "увійшов", у localStorage, якщо потрібно
         localStorage.setItem("userEmail", email);
-
-        // Перенаправлення
         window.location.href = "index.html";
       } else {
         alert("Введіть email та пароль!");
       }
     });
-  });
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
-  if (!form) return; // Якщо форми немає на цій сторінці — нічого не робимо
+  // Контакти
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name")?.value.trim();
+      const email = document.getElementById("email")?.value.trim();
+      const message = document.getElementById("message")?.value.trim();
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (name && email && message) {
-      alert("Дякуємо за ваше звернення!");
-
-      // Переадресація через 1.5 секунди
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 1500);
-    } else {
-      alert("Будь ласка, заповніть усі поля.");
-    }
-  });
+      if (name && email && message) {
+        alert("Дякуємо за ваше звернення!");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1500);
+      } else {
+        alert("Будь ласка, заповніть усі поля.");
+      }
+    });
+  }
 });
