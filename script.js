@@ -118,5 +118,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // зупиняє стандартну відправку форми
+
+      // Тут можна вставити перевірку логіна і пароля (якщо треба)
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Наприклад, умовна перевірка:
+      if (email && password) {
+        // Зберегти, що користувач "увійшов", у localStorage, якщо потрібно
+        localStorage.setItem("userEmail", email);
+
+        // Перенаправлення
+        window.location.href = "index.html";
+      } else {
+        alert("Введіть email та пароль!");
+      }
+    });
+  });
+
 
 
