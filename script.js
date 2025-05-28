@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Вхід
-  const loginForm = document.querySelector("form[action='login']") || document.querySelector("form.login");
+  const loginForm = document.querySelector("form");
   if (loginForm) {
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
