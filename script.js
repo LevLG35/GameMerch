@@ -105,21 +105,34 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Вхід
+  document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("form");
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const email = document.getElementById("email")?.value;
-      const password = document.getElementById("password")?.value;
 
-      if (email && password) {
-        localStorage.setItem("userEmail", email);
-        window.location.href = "index.html";
-      } else {
+  if (loginForm) {
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById("email")?.value.trim();
+      const passwordInput = document.getElementById("password")?.value.trim();
+
+      if (!emailInput || !passwordInput) {
         alert("Введіть email та пароль!");
+        return;
+      }
+
+      const savedUser = JSON.parse(localStorage.getItem('registeredUser'));
+
+      if (savedUser && savedUser.email === emailInput && savedUser.password === passwordInput) {
+        alert(`Вітаємо, ${savedUser.name}! Ви увійшли.`);
+        localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
+        window.location.href = "index.html";  // <-- редирект сюда
+      } else {
+        alert("Невірний email або пароль.");
       }
     });
   }
+});
+
 
   // Контакти
   const contactForm = document.getElementById("contactForm");
