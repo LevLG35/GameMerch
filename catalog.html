@@ -98,13 +98,21 @@
     <button id="sort-asc" style="padding: 5px 10px;">⬆ Від дешевих</button>
     <button id="sort-desc" style="padding: 5px 10px; margin-left: 10px;">⬇ Від дорогих</button>
 </div>
-            <div class="row">
-            <div class="col-md-4 product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg" alt="Футболка Minecraft" />
-                <h5 class="card-title">Футболка Minecraft</h5>
-                <p class="card-text" data-price="399">Ціна: 399 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Футболка Minecraft', 399)">Додати до кошика</button>
-            </div>
+            <div id="catalog" class="row">
+
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg" class="card-img-top" alt="Футболка Minecraft">
+      <div class="card-body">
+        <h5 class="card-title">Футболка Minecraft</h5>
+        <p class="card-text">399 грн</p>
+        <button class="btn btn-primary" 
+          onclick="addToCart('Футболка Minecraft', 399, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg')">
+          Додати до кошика
+        </button>
+      </div>
+    </div>
+  </div>
             <div class="col-md-4 product card p-2 m-2 shadow-sm" style="width: 18rem;">
                 <img class="card-img-top" src="https://images.shafastatic.net/399895957" alt="Чашка Dota 2" />
                 <h5 class="card-title">Чашка Dota 2</h5>
