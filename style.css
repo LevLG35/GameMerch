@@ -1,13 +1,11 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Orbitron', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
     color: #ccc;
 }
@@ -30,22 +28,22 @@ nav ul {
     box-shadow: 0 0 10px #9400ff;
 }
 
-    nav ul li {
-        margin: 0 15px;
-    }
+nav ul li {
+    margin: 0 15px;
+}
 
-        nav ul li a {
-            color: #e0b3ff;
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
-            padding: 1rem 0;
-            transition: color 0.3s ease;
-        }
+nav ul li a {
+    color: #e0b3ff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 1rem 0;
+    transition: color 0.3s ease;
+}
 
-            nav ul li a:hover {
-                color: #d500f9;
-            }
+nav ul li a:hover {
+    color: #d500f9;
+}
 
 main {
     padding: 2rem;
@@ -75,53 +73,51 @@ main {
     box-shadow: 0 0 10px #9400ff;
 }
 
-    .btn:hover {
-        background: #7a00cc;
-        box-shadow: 0 0 15px #d500f9;
-    }
+.btn:hover {
+    background: #7a00cc;
+    box-shadow: 0 0 15px #d500f9;
+}
 
 .product {
     background: #2c003e;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(148, 0, 255, 0.2);
-    margin: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem;
-    width: 200px;
+    width: 100%;
     text-align: center;
-    display: inline-block;
-    vertical-align: top;
     color: #e0b3ff;
 }
 
-    .product img {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-    }
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
 
-    .product h3 {
-        margin: 0.5rem 0;
-    }
+.product h3 {
+    margin: 0.5rem 0;
+}
 
-    .product p {
-        color: #b380ff;
-    }
+.product p {
+    color: #b380ff;
+}
 
-    .product button {
-        background: #9400ff;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 0 10px #9400ff;
-    }
+.product button {
+    background: #9400ff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px #9400ff;
+}
 
-        .product button:hover {
-            background: #7a00cc;
-            box-shadow: 0 0 15px #d500f9;
-        }
+.product button:hover {
+    background: #7a00cc;
+    box-shadow: 0 0 15px #d500f9;
+}
 
 footer {
     background: #1b0033;
