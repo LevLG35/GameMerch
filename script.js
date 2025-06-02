@@ -254,8 +254,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ✅ Обработка формы оформления заказа
+  document.addEventListener("DOMContentLoaded", function () {
   const orderForm = document.getElementById("order-form");
+
   if (orderForm) {
     orderForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -277,18 +278,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
+      // Очищаємо кошик
       localStorage.removeItem('cart');
 
       alert(`Дякуємо, ${name}! Ваше замовлення прийнято. Очікуйте дзвінка.`);
 
+      // Перекидаємо на головну сторінку через 2 секунди
       setTimeout(() => {
         window.location.href = "index.html";
       }, 2000);
     });
   }
 });
-
-}
-
-
-      
