@@ -1,394 +1,121 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GameMerch - Каталог</title>
-  <link rel="stylesheet" href="style.css" />
-
-<style>
-.card {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #fff;
-  margin: 10px;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.card-body {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.card-title {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.card-description {
-  flex-grow: 1;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.card button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.card button:hover {
-  background-color: #0056b3;
-}
-</style>
-
-
-<!-- Bootstrap CSS -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameMerch - Каталог</title>
+<link rel="stylesheet" href="style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
 <body>
-    <header>
-        <h1>GameMerch</h1>
-        <p>Магазин атрибутики для шанувальників комп'ютерних ігор</p>
-    </header>
+<header class="bg-primary text-white text-center py-4 mb-4">
+  <h1>GameMerch</h1>
+  <p>Каталог товарів</p>
+</header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Головна</a></li>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="cart.html">Кошик</a></li>
-            <li><a href="login.html">Увійти</a></li>
-            <li><a href="register.html">Реєстрація</a></li>
-            <li><a href="contacts.html">Контакти</a></li>
-        </ul>
-    </nav>
-
-    <main class="container my-4">
-        
-
-<section class="section">
-            <h2>Каталог товарів</h2>
-<div class="price-filter" style="margin: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
-    <button id="sort-asc" style="padding: 5px 10px;">⬆ Від дешевих</button>
-    <button id="sort-desc" style="padding: 5px 10px; margin-left: 10px;">⬇ Від дорогих</button>
-</div>
-            <div id="catalog" class="row">
-
-  <div class="col-md-3 mb-4">
-    <div class="card">
-      <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg" class="card-img-top" alt="Футболка Minecraft">
-      <div class="card-body">
-        <h5 class="card-title">Футболка Minecraft</h5>
-        <p class="card-text">399 грн</p>
-        <button class="btn btn-primary" 
-          onclick="addToCart('Футболка Minecraft', 399, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg')">
-          Додати до кошика
-        </button>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1b0033; box-shadow: 0 0 10px #9400ff;">
+  <div class="container">
+    <a class="navbar-brand text-white" href="index.html">GameMerch</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Головна</a></li>
+        <li class="nav-item"><a class="nav-link text-white active" href="catalog.html">Каталог</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="cart.html">Кошик</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="login.html">Увійти</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="register.html">Реєстрація</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Контакти</a></li>
+      </ul>
     </div>
   </div>
-            <div class="col-md-3 mb-4">
-    <div class="card">
-      <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_SuperMario223335663.jpg" class="card-img-top" alt="Футболка Super Mario">
-      <div class="card-body">
-        <h5 class="card-title">Футболка Super Mario</h5>
-        <p class="card-text">420 грн</p>
-        <button class="btn btn-primary" 
-          onclick="addToCart('Футболка Super Mario', 420, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_SuperMario223335663.jpg')">
-          Додати до кошика
-        </button>
-      </div>
-    </div>
- </div>
-            <div class="col-md-3 mb-4">
-      <div class="card">
-        <img src="https://maikoff.ua/uploaded/prints_spool/5/p4569l5956w1088x0y712t17c14front0max-kepka-6680-league-of-legends-logo.webp" class="card-img-top" alt="Кепка League of Legends" />
+</nav>
+
+<main class="container my-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg" class="card-img-top" alt="Футболка Minecraft">
         <div class="card-body">
-          <h5 class="card-title">Кепка League of Legends</h5>
-          <p class="card-text">299 грн</p>
-          <button class="btn btn-primary"
-            onclick="addToCart('Кепка League of Legends', 299, 'https://maikoff.ua/uploaded/prints_spool/5/p4569l5956w1088x0y712t17c14front0max-kepka-6680-league-of-legends-logo.webp')">
-            Додати до кошика
-          </button>
+          <h5 class="card-title">Футболка Minecraft</h5>
+          <p class="card-text">399 грн</p>
+          <button class="btn btn-primary" onclick="addToCart('Футболка Minecraft', 399, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_Minecraft1747649488.jpg')">Додати до кошика</button>
         </div>
       </div>
-            </div>
-
-<div class="col-md-3 mb-4">
-      <div class="card">
-        <img src="https://content.rozetka.com.ua/goods/images/big/528941397.jpg" class="card-img-top" alt="Постер Elden Ring" />
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_SuperMario223335663.jpg" class="card-img-top" alt="Футболка Super Mario">
+        <div class="card-body">
+          <h5 class="card-title">Футболка Super Mario</h5>
+          <p class="card-text">420 грн</p>
+          <button class="btn btn-primary" onclick="addToCart('Футболка Super Mario', 420, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Detskaya_futbolka_SuperMario223335663.jpg')">Додати до кошика</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="https://content.rozetka.com.ua/goods/images/big/528941397.jpg" class="card-img-top" alt="Постер Elden Ring">
         <div class="card-body">
           <h5 class="card-title">Постер Elden Ring</h5>
           <p class="card-text">149 грн</p>
-          <button class="btn btn-primary"
-            onclick="addToCart('Постер Elden Ring', 149, 'https://content.rozetka.com.ua/goods/images/big/528941397.jpg')">
-            Додати до кошика
-          </button>
+          <button class="btn btn-primary" onclick="addToCart('Постер Elden Ring', 149, 'https://content.rozetka.com.ua/goods/images/big/528941397.jpg')">Додати до кошика</button>
         </div>
       </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+  <div class="card shadow-sm">
+    <img src="https://content.rozetka.com.ua/goods/images/big/555555555.jpg" class="card-img-top" alt="Постер Doom Eternal">
+    <div class="card-body">
+      <h5 class="card-title">Постер Doom Eternal</h5>
+      <p class="card-text" data-price="199">Ціна: 199 грн</p>
+      <button class="btn btn-primary w-100" onclick="addToCart('Постер Doom Eternal', 199, 'https://content.rozetka.com.ua/goods/images/big/555555555.jpg')">Додати до кошика</button>
+    </div>
+  </div>
 </div>
 
-<div class="col-md-3 mb-4">
-      <div class="card">
-        <img src="https://content2.rozetka.com.ua/goods/images/big/489750705.jpg" class="card-img-top" alt="Брелок Cyberpunk 2077" />
-        <div class="card-body">
-          <h5 class="card-title">Брелок Cyberpunk 2077</h5>
-          <p class="card-text">99 грн</p>
-          <button class="btn btn-primary"
-            onclick="addToCart('Брелок Cyberpunk 2077', 99, 'https://content2.rozetka.com.ua/goods/images/big/489750705.jpg')">
-            Додати до кошика
-          </button>
-        </div>
-      </div>
+<div class="col-md-3 col-6 mb-4">
+  <div class="card shadow-sm">
+    <img src="https://content.rozetka.com.ua/goods/images/big/777777777.jpg" class="card-img-top" alt="Кружка Witcher">
+    <div class="card-body">
+      <h5 class="card-title">Кружка Witcher</h5>
+      <p class="card-text" data-price="149">Ціна: 149 грн</p>
+      <button class="btn btn-primary w-100" onclick="addToCart('Кружка Witcher', 149, 'https://content.rozetka.com.ua/goods/images/big/777777777.jpg')">Додати до кошика</button>
+    </div>
+  </div>
 </div>
 
-            <div class="col-md-3 mb-4">
-  <div class="card">
-    <img src="https://mfest.com.ua/media/productdesigner/designs/362140/additional/34zf12rby87o9nktqwxm.jpg" class="card-img-top" alt="Футболка Apex Legends">
+<div class="col-md-3 col-6 mb-4">
+  <div class="card shadow-sm">
+    <img src="https://content.rozetka.com.ua/goods/images/big/888888888.jpg" class="card-img-top" alt="Коврик Overwatch">
+    <div class="card-body">
+      <h5 class="card-title">Коврик Overwatch</h5>
+      <p class="card-text" data-price="249">Ціна: 249 грн</p>
+      <button class="btn btn-primary w-100" onclick="addToCart('Коврик Overwatch', 249, 'https://content.rozetka.com.ua/goods/images/big/888888888.jpg')">Додати до кошика</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 col-6 mb-4">
+  <div class="card shadow-sm">
+    <img src="https://content.rozetka.com.ua/goods/images/big/999999999.jpg" class="card-img-top" alt="Футболка Apex Legends">
     <div class="card-body">
       <h5 class="card-title">Футболка Apex Legends</h5>
-      <p class="card-text">399 грн</p>
-      <button class="btn btn-primary"
-        onclick="addToCart('Футболка Apex Legends', 399, 'https://mfest.com.ua/media/productdesigner/designs/362140/additional/34zf12rby87o9nktqwxm.jpg')">
-        Додати до кошика
-      </button>
+      <p class="card-text" data-price="399">Ціна: 399 грн</p>
+      <button class="btn btn-primary w-100" onclick="addToCart('Футболка Apex Legends', 399, 'https://content.rozetka.com.ua/goods/images/big/999999999.jpg')">Додати до кошика</button>
     </div>
   </div>
 </div>
 
-<div class="col-md-3 mb-4">
-  <div class="card">
-    <img src="https://maikoff.ua/uploaded/prints_spool/10/p9166l10575w1000x968y1056t15c4front0max-chashka-s-tsvetnoy-ruchkoy-fortnite-logo.webp" class="card-img-top" alt="Кружка Fortnite">
-    <div class="card-body">
-      <h5 class="card-title">Кружка Fortnite</h5>
-      <p class="card-text">189 грн</p>
-      <button class="btn btn-primary"
-        onclick="addToCart('Кружка Fortnite', 189, 'https://maikoff.ua/uploaded/prints_spool/10/p9166l10575w1000x968y1056t15c4front0max-chashka-s-tsvetnoy-ruchkoy-fortnite-logo.webp')">
-        Додати до кошика
-      </button>
-    </div>
   </div>
-</div>
+</main>
 
-<div class="col-md-3 mb-4">
-  <div class="card">
-    <img src="https://shop-cdn1-2.vigbo.tech/shops/126035/products/22049000/images/2-e2ad575c45802a0a9a48ce6d38850906.jpg" class="card-img-top" alt="Постер The Witcher 3">
-    <div class="card-body">
-      <h5 class="card-title">Постер The Witcher 3</h5>
-      <p class="card-text">159 грн</p>
-      <button class="btn btn-primary"
-        onclick="addToCart('Постер The Witcher 3', 159, 'https://shop-cdn1-2.vigbo.tech/shops/126035/products/22049000/images/2-e2ad575c45802a0a9a48ce6d38850906.jpg')">
-        Додати до кошика
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-3 mb-4">
-  <div class="card">
-    <img src="https://content.rozetka.com.ua/goods/images/big/460524673.jpg" class="card-img-top" alt="Коврик для миші Valorant">
-    <div class="card-body">
-      <h5 class="card-title">Коврик для миші Valorant</h5>
-      <p class="card-text">249 грн</p>
-      <button class="btn btn-primary"
-        onclick="addToCart('Коврик для миші Valorant', 249, 'https://content.rozetka.com.ua/goods/images/big/460524673.jpg')">
-        Додати до кошика
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-3 mb-4">
-  <div class="card">
-    <img src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/51807_Kepka_CS_GO.jpg" class="card-img-top" alt="Кепка CS:GO">
-    <div class="card-body">
-      <h5 class="card-title">Кепка CS:GO</h5>
-      <p class="card-text">299 грн</p>
-      <button class="btn btn-primary"
-        onclick="addToCart('Кепка CS:GO', 299, 'https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/51807_Kepka_CS_GO.jpg')">
-        Додати до кошика
-      </button>
-    </div>
-  </div>
-</div>
-
-
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/447180153.jpg" alt="Футболка God of War" />
-                <h5 class="card-title">Футболка God of War</h5>
-                <p class="card-text" data-price="449">Ціна: 449 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Футболка God of War', 449)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content1.rozetka.com.ua/goods/images/big/475462197.jpg" alt="Чашка Overwatch" />
-                <h5 class="card-title">Чашка Overwatch</h5>
-                <p class="card-text" data-price="199">Ціна: 199 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Чашка Overwatch', 199)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://itemshop.com.ua/images/product_images/popup_images/17773_0.jpg" alt="Блокнот Genshin Impact" />
-                <h5 class="card-title">Блокнот Genshin Impact</h5>
-                <p class="card-text" data-price="129">Ціна: 129 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Блокнот Genshin Impact', 129)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content1.rozetka.com.ua/goods/images/big/459965924.jpg" alt="Сумка Resident Evil" />
-                <h5 class="card-title">Сумка Resident Evil</h5>
-                <p class="card-text" data-price="549">Ціна: 549 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Сумка Resident Evil', 549)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://images.prom.ua/6553222020_w600_h600_6553222020.jpg" alt="Постер Red Dead Redemption 2" />
-                <h5 class="card-title">Постер Red Dead Redemption 2</h5>
-                <p class="card-text" data-price="149">Ціна: 149 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Постер Red Dead Redemption 2', 149)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://cdn.27.ua/sc--media--prod/default/1f/7b/ee/1f7beeee-6afe-4472-a458-21cea20815a8.jpg" alt="Футболка Half-Life" />
-                <h5 class="card-title">Футболка Half-Life</h5>
-                <p class="card-text" data-price="399">Ціна: 399 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Футболка Half-Life', 399)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/_Chashka_Portal_21590201142.jpg" alt="Чашка Portal" />
-                <h5 class="card-title">Чашка Portal</h5>
-                <p class="card-text" data-price="179">Ціна: 179 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Чашка Portal', 179)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://files.foxtrot.com.ua/PhotoNew/img_0_32561_721_0.jpg" alt="Брелок Assassin's Creed" />
-                <h5 class="card-title">Брелок Assassin's Creed</h5>
-                <p class="card-text" data-price="99">Ціна: 99 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Брелок Assassin\'s Creed', 99)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSzbOrVJnh8faztYa99teVCriudsVSGd7JRDegqOjjo6d8eI_e_eIo6v20eu6HBCJUSTxAMHFSrFg3HZX7yVZ7jUW2W5RQJz46F6QteDmn9UlzVJvZzCR63eQ" alt="Ковдра Among Us" />
-                <h5 class="card-title">Коврик Among Us</h5>
-                <p class="card-text" data-price="699">Ціна: 699 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Ковдра Among Us', 699)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/459963396.jpg" alt="Сумка The Last of Us" />
-                <h5 class="card-title">Сумка The Last of Us</h5>
-                <p class="card-text" data-price="599">Ціна: 599 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Сумка The Last of Us', 599)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://shop-cdn1-2.vigbo.tech/shops/126035/products/20962468/images/3-fb28d58ba3b646cf4360ea42631163ba.jpg" alt="Постер Cyberpunk 2077" />
-                <h5 class="card-title">Постер Cyberpunk 2077</h5>
-                <p class="card-text" data-price="149">Ціна: 149 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Постер Cyberpunk 2077', 149)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/196206599.jpg" alt="Кепка PUBG" />
-                <h5 class="card-title">Кепка PUBG</h5>
-                <p class="card-text" data-price="279">Ціна: 279 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Кепка PUBG', 279)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/202438977.jpg" alt="Футболка Fallout" />
-                <h5 class="card-title">Футболка Fallout</h5>
-                <p class="card-text" data-price="399">Ціна: 399 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Футболка Fallout', 399)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://maikoff.ua/uploaded/prints_spool/7/p6359l7752w1000x968y1124t15c6front0max-chashka-s-tsvetnoy-ruchkoy-doom-logo.webp" alt="Чашка Doom" />
-                <h5 class="card-title">Чашка Doom</h5>
-                <p class="card-text" data-price="199">Ціна: 199 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Чашка Doom', 199)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://bi.ua/uploaded-images/products/size_60/572056_1.jpg" alt="Фігурка Mario" />
-                <h5 class="card-title">Фігурка Mario</h5>
-                <p class="card-text" data-price="349">Ціна: 349 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Фігурка Mario', 349)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://content.rozetka.com.ua/goods/images/big/276439326.jpg" alt="Пенал Sonic" />
-                <h5 class="card-title">Пенал Sonic</h5>
-                <p class="card-text" data-price="199">Ціна: 199 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Пенал Sonic', 199)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://files.foxtrot.com.ua/PhotoNew/img_0_834_758_0_1_637739814880295348.jpg" alt="Коврик League of Legends" />
-                <h5 class="card-title">Коврик League of Legends</h5>
-                <p class="card-text" data-price="259">Ціна: 259 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Коврик League of Legends', 259)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://images.prom.ua/6555114745_w600_h600_6555114745.jpg" alt="Плакат Minecraft" />
-                <h5 class="card-title">Плакат Minecraft</h5>
-                <p class="card-text" data-price="139">Ціна: 139 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Плакат Minecraft', 139)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://img.kwcdn.com/product/fancy/c72ade02-87d1-4e0e-8dcc-a0453a5a9d72.jpg?imageView2/2/w/800/q/70/format/webp" alt="Наклейки Steam" />
-                <h5 class="card-title">Наклейки Steam</h5>
-                <p class="card-text" data-price="89">Ціна: 89 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Наклейки Steam', 89)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://cdn.personage.ua/images/thumbnails/1290/1290/detailed/19/sub-zero-mask-mabzwb101.jpg" alt="Маска Sub Zero" />
-                <h5 class="card-title">Маска Sub Zero</h5>
-                <p class="card-text" data-price="219">Ціна: 219 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Маска Sub Zero', 219)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://cdn.europosters.eu/image/1300/%D0%A7%D0%B0%D1%88%D0%BA%D0%B8/halo-locke-and-master-chief-i47133.jpg" alt="Чашка Halo" />
-                <h5 class="card-title">Чашка Halo</h5>
-                <p class="card-text" data-price="189">Ціна: 189 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Чашка Halo', 189)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://ua.tourbonsafari.com/uploads/202314714/tourbon-hunting-backpack-nylon-camouflage4f12f50d-40bf-4a75-a55f-e6b4e71eddf9.jpg" alt="Рюкзак Battlefield" />
-                <h5 class="card-title">Рюкзак Battlefield</h5>
-                <p class="card-text" data-price="629">Ціна: 629 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Рюкзак Battlefield', 629)">Додати до кошика</button>
-            </div>
-            <div class="product card p-2 m-2 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="https://ae04.alicdn.com/kf/S59c1e1fdae4542f38d310686dbc0bbd9Z.jpg" alt="Футболка Hitman" />
-                <h5 class="card-title">Футболка Hitman</h5>
-                <p class="card-text" data-price="419">Ціна: 419 грн</p>
-                <button class="btn btn-primary mt-2" onclick="addToCart('Футболка Hitman', 419)">Додати до кошика</button>
-            </div>
-           
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 GameMerch. Усі права захищено.</p>
-    </footer>
-
- 
+<footer class="text-center py-3 mt-4 bg-light text-muted">
+  &copy; 2025 GameMerch. Усі права захищено.
+</footer>
 
 <script src="script.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
