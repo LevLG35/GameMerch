@@ -158,5 +158,37 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+const orderForm = document.getElementById("order-form");
+if (orderForm) {
+  orderForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name")?.value.trim();
+    const phone = document.getElementById("phone")?.value.trim();
+    const address = document.getElementById("address")?.value.trim();
+
+    if (!name || !phone || !address) {
+      alert("Будь ласка, заповніть усі поля.");
+      return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart.length === 0) {
+      alert("Ваш кошик порожній. Додайте товари перед оформленням.");
+      window.location.href = "catalog.html";
+      return;
+    }
+
+    localStorage.removeItem('cart');
+
+    alert(`Дякуємо, ${name}! Ваше замовлення прийнято. Очікуйте дзвінка.`);
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 2000);
+  });
+}
+
 
       
