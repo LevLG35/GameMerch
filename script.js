@@ -255,11 +255,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM повністю завантажено");
+
   const orderForm = document.getElementById("order-form");
+  console.log("orderForm:", orderForm);
 
   if (orderForm) {
     orderForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      console.log("Форма відправлена");
 
       const name = document.getElementById("name")?.value.trim();
       const phone = document.getElementById("phone")?.value.trim();
@@ -278,12 +282,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Очищаємо кошик
       localStorage.removeItem('cart');
-
-      alert(`Дякуємо, ${name}! Ваше замовлення прийнято. Очікуйте дзвінка.`);
-
-      // Перекидаємо на головну сторінку через 2 секунди
+      alert(`Дякуємо, ${name}! Ваше замовлення прийнято.`);
       setTimeout(() => {
         window.location.href = "index.html";
       }, 2000);
