@@ -1,6 +1,8 @@
-// ==== Корзина ====
+
+// === Кошик ===
 function addToCart(productName, price, image) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
   const existingItem = cart.find(item => item.name === productName);
 
   if (existingItem) {
@@ -41,10 +43,12 @@ function renderCart() {
         </div>
       </div>
     `;
+
     const btn = document.createElement('button');
     btn.textContent = 'Видалити';
     btn.className = 'remove-btn';
     btn.onclick = () => removeFromCart(index);
+
     li.appendChild(btn);
     cartItems.appendChild(li);
 
@@ -54,11 +58,10 @@ function renderCart() {
   cartTotal.textContent = `Разом: ${total} грн`;
 }
 
-// ==== Основной обработчик ====
+// === DOM ЗАВАНТАЖЕННЯ ===
 document.addEventListener("DOMContentLoaded", function () {
   renderCart();
 
-  // Кнопка оформлення
   const checkoutBtn = document.getElementById('checkout-btn');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', function () {
@@ -71,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Сортування
   const ascBtn = document.getElementById("sort-asc");
   const descBtn = document.getElementById("sort-desc");
   const container = document.querySelector(".row");
@@ -85,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const products = Array.from(container.querySelectorAll(".product"));
     products.sort((a, b) => ascending ? getPrice(a) - getPrice(b) : getPrice(b) - getPrice(a));
     container.innerHTML = "";
-    products.forEach(product => container.appendChild(product));
+    products.forEach((product) => container.appendChild(product));
   }
 
   if (ascBtn && descBtn) {
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     descBtn.addEventListener("click", () => sortProducts(false));
   }
 
-  // Реєстрація
+  // === Реєстрація ===
   const regForm = document.querySelector("form.register");
   if (regForm) {
     regForm.addEventListener("submit", function (e) {
@@ -106,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (name && email && password) {
         const user = { name, email, password };
         localStorage.setItem('registeredUser', JSON.stringify(user));
+
         alert("Реєстрація успішна!");
         window.location.href = "login.html";
       } else {
@@ -114,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Логін
+  // === Вхід ===
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", function (e) {
@@ -122,6 +125,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const email = document.getElementById("email")?.value.trim();
       const password = document.getElementById("password")?.value.trim();
+
+      if (!email || !password) {
+        alert("Будь ласка, введіть email та пароль.");
+        return;
+      }
 
       const savedUser = JSON.parse(localStorage.getItem('registeredUser'));
 
@@ -135,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Контактна форма
+  // === Форма зворотного зв’язку ===
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -155,11 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Оформлення замовлення
+  // === Оформлення замовлення ===
   const orderForm = document.getElementById("order-form");
   if (orderForm) {
     orderForm.addEventListener("submit", function (e) {
       e.preventDefault();
+
       const name = document.getElementById("name")?.value.trim();
       const phone = document.getElementById("phone")?.value.trim();
       const address = document.getElementById("address")?.value.trim();
@@ -185,5 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
 
   
