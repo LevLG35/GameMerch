@@ -194,6 +194,78 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+function decreaseQuantity(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart[index].quantity > 1) {
+    cart[index].quantity--;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+}
 
+function increaseQuantity(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart[index].quantity++;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+function renderCart() {
+  const cartItems = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.className = 'list-group-item bg-transparent text-start';
+    li.innerHTML = `
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <img src="${item.image}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; margin-right: 15px;">
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>${item.price} грн</small>
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <button class="btn btn-sm btn-outline-light me-2" onclick="decreaseQuantity(${index})">−</button>
+          <span class="me-2">${item.quantity}</span>
+          <button class="btn btn-sm btn-outline-light me-3" onclick="increaseQuantity(${index})">+</button>
+          <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">×</button>
+        </div>
+      </div>
+    `;
+    cartItems.appendChild(li);
+    total += item.price * item.quantity;
+  });
+
+  cartTotal.textContent = `Разом: ${total} грн`;
+}
+
+function removeFromCart(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCart();
+
+  const checkoutBtn = document.getElementById('checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Ваш кошик порожній!');
+        return;
+      }
+      window.location.href = 'checkout.html';
+    });
+  }
+});
 
   
