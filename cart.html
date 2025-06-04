@@ -53,7 +53,7 @@
 </footer>
 
 <script>
-  function renderCart() {
+function renderCart() {
   const cartItems = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -63,14 +63,14 @@
 
   cart.forEach((item, index) => {
     const li = document.createElement('li');
-    li.className = 'bg-transparent text-start';
+    li.className = 'bg-transparent text-start mb-3'; // без border
     li.innerHTML = `
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between text-white">
         <div class="d-flex align-items-center">
           <img src="${item.image}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; margin-right: 15px;">
           <div>
-            <strong>${item.name}</strong><br>
-            <small>${item.price} грн</small>
+            <strong style="color: #ffffff;">${item.name}</strong><br>
+            <small style="color: #cccccc;">${item.price} грн</small>
           </div>
         </div>
         <div class="d-flex align-items-center">
@@ -86,6 +86,24 @@
   });
 
   cartTotal.textContent = `Разом: ${total} грн`;
+}
+
+function increaseQuantity(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart[index].quantity += 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+function decreaseQuantity(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
 }
 
 function removeFromCart(index) {
@@ -110,8 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-  
 </script>
+
 </body>
 </html>
