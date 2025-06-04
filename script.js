@@ -1,4 +1,5 @@
-
+document.addEventListener("DOMContentLoaded", () => {
+ 
   const ascBtn = document.getElementById("sort-asc");
   const descBtn = document.getElementById("sort-desc");
   const productRow = document.querySelector(".row");
@@ -21,6 +22,9 @@
 
   ascBtn?.addEventListener("click", () => sortProducts(true));
   descBtn?.addEventListener("click", () => sortProducts(false));
+});
+
+
 
 // === Кошик ===
 function addToCart(productName, price, image) {
