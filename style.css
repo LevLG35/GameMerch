@@ -147,8 +147,10 @@ main {
     flex: 1;
 }
 .card-img-top {
-  object-fit: cover;
-  height: 250px; 
-  width: 100%;
-  border-radius: 5px;
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: 8px;
 }
+
