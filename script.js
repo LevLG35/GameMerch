@@ -1,13 +1,12 @@
+
 document.addEventListener("DOMContentLoaded", () => {
- 
   const ascBtn = document.getElementById("sort-asc");
   const descBtn = document.getElementById("sort-desc");
   const productRow = document.querySelector(".row");
 
   function getPrice(card) {
-    const text = card.querySelector(".card-text")?.textContent || "";
-    const match = text.match(/\d+/g);
-    return match ? parseInt(match[0]) : 0;
+    const priceText = card.querySelector(".card-text")?.dataset.price;
+    return parseFloat(priceText) || 0;
   }
 
   function sortProducts(ascending = true) {
@@ -17,12 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const priceB = getPrice(b);
       return ascending ? priceA - priceB : priceB - priceA;
     });
-    cards.forEach(card => productRow.appendChild(card));
+    cards.forEach(card => productRow.appendChild(card)); // оновити порядок
   }
 
   ascBtn?.addEventListener("click", () => sortProducts(true));
   descBtn?.addEventListener("click", () => sortProducts(false));
 });
+
+
 
 
 
