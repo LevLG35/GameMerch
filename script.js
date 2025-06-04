@@ -5,18 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const productRow = document.querySelector(".row");
 
   function getPrice(card) {
+    // Вважаємо, що ціна лежить у data-price атрибуті
     const priceText = card.querySelector(".card-text")?.dataset.price;
-    return parseFloat(priceText) || 0;
+    return priceText ? parseFloat(priceText) : 0;
   }
 
   function sortProducts(ascending = true) {
+    if (!productRow) return;
     const cards = Array.from(productRow.children);
     cards.sort((a, b) => {
       const priceA = getPrice(a);
       const priceB = getPrice(b);
       return ascending ? priceA - priceB : priceB - priceA;
     });
-    cards.forEach(card => productRow.appendChild(card)); // оновити порядок
+    cards.forEach(card => productRow.appendChild(card));
   }
 
   ascBtn?.addEventListener("click", () => sortProducts(true));
