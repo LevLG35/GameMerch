@@ -209,4 +209,25 @@ function increaseQuantity(index) {
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCart();
 }
+  const ascBtn = document.getElementById("sort-asc");
+  const descBtn = document.getElementById("sort-desc");
+  const productRow = document.querySelector(".row");
 
+  function getPrice(card) {
+    const text = card.querySelector(".card-text")?.textContent || "";
+    const number = text.match(/\d+/g);
+    return number ? parseInt(number[0]) : 0;
+  }
+
+  function sortProducts(ascending = true) {
+    const cards = Array.from(productRow.children);
+    cards.sort((a, b) => {
+      const priceA = getPrice(a);
+      const priceB = getPrice(b);
+      return ascending ? priceA - priceB : priceB - priceA;
+    });
+    cards.forEach(card => productRow.appendChild(card)); // оновити порядок
+  }
+
+  ascBtn?.addEventListener("click", () => sortProducts(true));
+  descBtn?.addEventListener("click", () => sortProducts(false));
